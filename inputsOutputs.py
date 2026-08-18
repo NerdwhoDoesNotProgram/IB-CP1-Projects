@@ -11,4 +11,4 @@ print("Welcome to class, " + name.strip().capitalize())
 
 print("What did you do this weekend: ")
 weekend=input()
-print("That is super cool. I wish that I " + weekend + "this weekend.")
+print("That is super cool! I wish that I " + weekend + "this weekend.")
