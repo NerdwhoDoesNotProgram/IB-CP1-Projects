@@ -1,4 +1,4 @@
-# IB - Character Introduction
+# IB - Character Introduction Asignment
 
 char_name = input("What is your character's name? ").strip().title()
 char_age = input("How old is your character? ").strip()
