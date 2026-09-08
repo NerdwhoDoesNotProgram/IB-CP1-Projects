@@ -1,5 +1,5 @@
 # IB, 2nd period - Strings Methods Notes
-
+"""
 sentence =  "The quick brown fox jumped over the lazy dog"
 
 fixed = sentence.replace("fox", 'wolf')
@@ -21,8 +21,8 @@ full_name = fixed.title() + " " + last_fixed.title()
 print("Hello "+ full_name.title())
 
 print(full_name.isalpha()) # Checks to see if whole thing is letters
-print(full_name.isnumeric()) # Numbers
-print(full_name.isupper()) # Uppercase
+print(full_name.isnumeric()) # Checks to see if the whole thing isNumbers
+print(full_name.isupper()) # Checks to see if the string is all Uppercase
 
 
 #print("Hello " + name)
@@ -36,3 +36,13 @@ print(f"Upper: {sentence.upper()}")
 print(f"Capitalize: {sentence.capitalize()}")
 print(f"Title: {sentence.title()}")
 print(fixed)
+
+# Formatted string
+print(f"Hello {full_name}, welcome to my program")"""
+
+letter = input("Give me a letter: ")
+letter = letter[0].lower()
+number_value = ord(letter)
+number_value += 2
+new_letter  = chr(number_value)
+print(f"Your letter was {letter}, now it is {new_letter}")
