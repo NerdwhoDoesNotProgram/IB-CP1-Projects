@@ -4,8 +4,7 @@ def get_name():
     while True:
         try:
             # name only contains letters and spaces
-            if not full_name.replace(" ", "").isalpha():
-                raise ValueError
+            
             
             first_name = input("What is your first name: ").strip().title()
             last_name = input("What is your last name: ").strip().title()
@@ -17,6 +16,8 @@ def get_name():
 
             name = full_name.title()
 
+            if not full_name.replace(" ", "").isalpha():
+                raise ValueError
             return name
 
         except ValueError:
@@ -58,7 +59,7 @@ def get_gpa():
             return gpa
 
         except ValueError:
-            print("That's not a valid GPA, try again.")
+            print("That's not a valid GPA, please try again.")
 
 
 name = get_name()
@@ -66,6 +67,6 @@ phone = get_phone()
 gpa = get_gpa()
 
 print()
-print("name:", name)
-print("phone:", phone)
+print("Name:", name)
+print("Phone:", phone)
 print("GPA:", gpa)
