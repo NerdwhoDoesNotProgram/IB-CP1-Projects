@@ -50,7 +50,7 @@ def get_gpa():
         try:
             gpa = float(input("What is your GPA? ").strip())
 
-            # Make sure GPA is within a normal 0.0–4.0 range, unless you live in texas, then this would be wrong)
+            # Make sure GPA is within a normal 0.0–4.0 range (unless you live in texas, then this would be wrong)
             if gpa < 0 or gpa > 4:
                 raise ValueError
 
