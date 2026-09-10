@@ -37,30 +37,22 @@ def original_dice_roller():
     print("You rolled:", rolls)
     print("Your rolls total to:", sum(rolls))
 
+
 def dice_roller_playagain():
-
-
     def get_dice_size():
         while True:
             try:
-                dice_size = input(
-                    "What size dice would you like to roll? "
-                    "(D4, D6, D8, D10, D12, D20): "
-                ).strip().upper()
+                dice_size = input("What size dice would you like to roll? ""(D4, D6, D8, D10, D12, D20): ").strip().upper()
 
                 if dice_size.startswith("D"):
-                    dice_size = dice_size[1:]
-
-                if dice_size not in ["4", "6", "8", "10", "12", "20"]:
+                   dice_size = dice_size[1:]
+                if dice_size not in ["1", "4", "6", "8", "10", "12", "20", "100", "5000", "999999999", "999999999999999999999999999"]:
                     raise ValueError
 
                 return int(dice_size)
 
             except ValueError:
-                print(
-                    "Invalid dice size. Please choose "
-                    "D4, D6, D8, D10, D12, or D20."
-                )
+                print("Invalid dice size. Please choose ""D4, D6, D8, D10, D12, or D20.")
 
 
     def roll_dice(dice_size, number_of_dice):
@@ -78,9 +70,7 @@ def dice_roller_playagain():
 
         while True:
             try:
-                number_of_dice = int(
-                    input("How many dice would you like to roll? ")
-                )
+                number_of_dice = int(input("How many dice would you like to roll? "))
 
                 if number_of_dice <= 0:
                     raise ValueError
@@ -93,7 +83,7 @@ def dice_roller_playagain():
         rolls = roll_dice(dice_size, number_of_dice)
 
         if len(rolls) == 1:
-            print("You rolled a", rolls[0], "!")
+            print("You rolled a", rolls[0])
         else:
             print("You rolled:", rolls)
             print("Your rolls total to:", sum(rolls))
