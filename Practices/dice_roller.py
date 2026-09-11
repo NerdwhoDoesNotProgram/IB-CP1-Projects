@@ -1,7 +1,10 @@
 # IB - Dice Roller Program
 
 import random
+import sys
 import time
+
+sys.set_int_max_str_digits(1000000000) # Increases the maximum number of digits allowed in an integer to 1 billion
 
 def original_dice_roller():
     def get_dice_size():
@@ -73,7 +76,7 @@ def for_my_sister():
         print(line)
         
         row_counter += 1
-        time.sleep(0.05)
+        time.sleep(0.02)
 
 def dice_roller_playagain():
     def get_dice_size():
@@ -91,7 +94,7 @@ def dice_roller_playagain():
                     for_my_sister()
 
                 if dice_size == "GOOGOLPLEX":
-                    return 10**(10**100)
+                    return 10**(10000000)*999
                 
                 if dice_size not in ["1", "4", "6", "8", "10", "12", "20", "100", "5000", "999999999", "999999999999999999999999999"]:
                     raise ValueError
