@@ -1,0 +1,66 @@
+IB, 2nd period - Crew Shares Pseudocode
+
+Notes:
+
+    Funcitons wanted: 
+      Pirates (advanced)
+        
+      Yondu Share
+
+      Peter Share
+
+      Crew Share
+
+      main
+
+    Example for what looks like:
+        starting_loot = Generate number (500, 5000)
+        loot = starting_loot
+
+        Pirates():
+            pirates = []
+            num = how many pirates?
+
+            for num 
+                what is the (num) pirates name
+                pirates + name
+
+            for pirate in pirates
+              loot -= 3
+
+        Yondu():
+            yondu_share = loot * 0.13
+
+            loot -= yondu_share
+
+
+        Peter():
+            peter_share = loot *0.11
+
+            loot -= peter_share
+
+
+        Crew():
+            crew_share = loot/(len(pirates) + 2)
+
+            yondu_share += crew_share
+
+            print yondu's share: yondu_share
+
+            peter_share += crew-share
+
+            print Peter's share; peter_share
+
+            print crew's share = (crew_share+3)
+
+        main():
+            print (starting_loot)
+
+            pirates()
+            yondu()
+            peter()
+            crew()
+
+        main()
+
+SET starting_loot
