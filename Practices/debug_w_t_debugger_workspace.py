@@ -1,6 +1,6 @@
 # IB - Debug with the Debugger
-
 # Ravager Snack Bar
+
 import random
 
 pirate_name = input("What's your name, pirate? ")
@@ -8,7 +8,8 @@ snack_name = input("What snack do you want? ")
 
 price = random.randint(2, 8)  # random price in credits
 quantity = int(input("How many would you like? "))
-# Error fixed: Runtime error: quantity was originally stored as a string.I added the int() function to convert the input string to an integer.
+# Error fixed: Runtime error: quantity was originally stored as a string.
+# I added the int() function to convert the input string to an integer.
 
 total = price * quantity
 
@@ -21,7 +22,9 @@ if total >= 20:
     total -= loyalty_bonus
 
 discounted_total = total - (total * 0.10)
-# Error fixed: Logic error: Discount was not applied correctly.I changed the calculation so that 10% of the total is subtracted from the total, rather than subtracting 2 * 0.10.
+# Error fixed: Logic error: Discount was not applied correctly.
+# I changed the calculation so that 10% of the total is subtracted
+# from the total, rather than subtracting 2 * 0.10.
 
 tax_rate = 0.08
 total_with_tax = discounted_total + (discounted_total * tax_rate)
@@ -30,12 +33,15 @@ total_with_tax = discounted_total + (discounted_total * tax_rate)
 def regular_receipt():
     print("Hello, " + pirate_name + "! Here's your order summary:")
     print("Snack: " + snack_name)
-    # Error fixed: Runtime error: name 'snackName' is not defined. I changed it to 'snack_name' to match the variable name used earlier in the code.
+    # Error fixed: Runtime error: name 'snackName' is not defined.
+    # I changed it to 'snack_name' to match the variable name used earlier in the code.
 
     print("Price per snack: " + str(price) + " credits")
 
     print("Total before tax: " + str(round(discounted_total, 2)) + " credits")
-    # Error fixed: Logic error: Printed the price instead of the total. I changed the variable from 'price' to 'discounted_total' because the amount before tax should include the discount.
+    # Error fixed: Logic error: Printed the price instead of the total.
+    # I changed the variable from 'price' to 'discounted_total' because
+    # the amount before tax should include the discount.
 
     if loyalty_bonus > 0:
         print("Loyalty bonus applied: 1 credit off")
@@ -90,12 +96,13 @@ def fancy_receipt():
 def main():
     fancy_input = [
         "fancy", "f", "fan", "receipt",
-        "receipts", "yes", "sure", "ok", "okay", "y"
+        "receipts", "yes", "sure", "ok", "okay"
     ]
 
     regular_or_fancy = input(
         "Would you like a regular receipt or a fancy receipt? "
-        "(Enter 'regular' or 'fancy'): ").lower().strip()
+        "(Enter 'regular' or 'fancy'): "
+    ).lower().strip()
 
     if regular_or_fancy in fancy_input:
         fancy_receipt()
@@ -104,5 +111,3 @@ def main():
 
 
 main()
-
-# I hope I did not end up changing the code too much, I changed it a lot originally, and then seperated it back into functions to make it easier.
