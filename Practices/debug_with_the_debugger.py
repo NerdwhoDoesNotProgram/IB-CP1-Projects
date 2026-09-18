@@ -34,8 +34,8 @@ def regular_receipt():
 
     print("Price per snack: " + str(price) + " credits")
 
-    print("Total before tax: " + str(round(discounted_total, 2)) + " credits")
-    # Error fixed: Logic error: Printed the price instead of the total. I changed the variable from 'price' to 'discounted_total' because the amount before tax should include the discount.
+    print("Total before tax: " + str(round(total, 2)) + " credits")
+    # Error fixed: Logic error: Printed the price instead of the total. I changed the variable from 'price' to 'total'.
 
     if loyalty_bonus > 0:
         print("Loyalty bonus applied: 1 credit off")
@@ -75,7 +75,7 @@ def fancy_receipt():
     print(f"{'10% discount:':<39}-{discount:>6.2f}")
 
     print("------------------------------------------------")
-    print(f"{'Total before tax:':<39}{discounted_total:>7.2f}")
+    print(f"{'Total before tax:':<39}{total:>7.2f}")
 
     tax = discounted_total * tax_rate
     print(f"{'Tax (8%):':<39}{tax:>7.2f}")
