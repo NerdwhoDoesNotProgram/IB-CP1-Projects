@@ -1,66 +1,50 @@
 IB, 2nd period - Crew Shares Pseudocode
 
-Notes:
+GET number of pirates from user
 
-    Funcitons wanted: 
-      Pirates (advanced)
-        
-      Yondu Share
+GENERATE a random whole number of units between 500 and 5,000
 
-      Peter Share
+SET units found to the randomly generated number
 
-      Crew Share
+UPDATE number of crew members as number of pirates minus 2
 
-      main
+CREATE an empty list of crew member names
 
-    Example for what looks like:
-        starting_loot = Generate number (500, 5000)
-        loot = starting_loot
+FOR each crew member from 1 through the number of crew members
+    GET the crew member's name from the user
+    ADD the name to the list of crew member names
 
-        Pirates():
-            pirates = []
-            num = how many pirates?
+CALCULATE the total number of units already given to the crew as number of crew members multiplied by 3
 
-            for num 
-                what is the (num) pirates name
-                pirates + name
+SUBTRACT the units already given to the crew from the units found
 
-            for pirate in pirates
-              loot -= 3
+DISPLAY the units found
 
-        Yondu():
-            yondu_share = loot * 0.13
+CALCULATE Yondu's share as 13 percent of the remaining units
 
-            loot -= yondu_share
+ROUND Yondu's share to 2 decimal places
 
+SUBTRACT Yondu's share from the remaining units
 
-        Peter():
-            peter_share = loot *0.11
+CALCULATE Peter's share as 11 percent of the remaining units
 
-            loot -= peter_share
+ROUND Peter's share to 2 decimal places
 
+SUBTRACT Peter's share from the remaining units
 
-        Crew():
-            crew_share = loot/(len(pirates) + 2)
+CALCULATE the remaining crew share as the remaining units divided evenly among all pirates
 
-            yondu_share += crew_share
+ROUND the remaining crew share to 2 decimal places
 
-            print yondu's share: yondu_share
+UPDATE Yondu's total share to Yondu's share plus the remaining crew share
 
-            peter_share += crew-share
+UPDATE Peter's total share to Peter's share plus the remaining crew share
 
-            print Peter's share; peter_share
+UPDATE each crew member's total share to the remaining crew share plus 3
 
-            print crew's share = (crew_share+3)
+DISPLAY Yondu's total share
 
-        main():
-            print (starting_loot)
+DISPLAY Peter's total share
 
-            pirates()
-            yondu()
-            peter()
-            crew()
-
-        main()
-
-SET starting_loot
+FOR each crew member in the list of crew member names
+    DISPLAY the crew member's name and their total share
