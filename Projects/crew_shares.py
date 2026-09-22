@@ -33,8 +33,7 @@ def peter(remaining_units):
     return peter_share, remaining_units
 
 def crew(remaining_units, number_in_crew):
-    crew_share = round(remaining_units / number_in_crew + 2, 2)
-
+    crew_share = round(remaining_units / (number_in_crew + 2), 2)
     return crew_share
 
 def main():
