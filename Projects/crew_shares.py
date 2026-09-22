@@ -53,7 +53,7 @@ def main():
 
     yondu_total = round(yondu_share + crew_share, 2)
     peter_total = round(peter_share + crew_share, 2)
-    individual_crew_total = round(crew_share + 3, 2)
+    individual_crew_total = round(crew_share, 2)
 
     print()
     print(f"Units found: {starting_units}")
