@@ -1,7 +1,7 @@
 # IB, 2nd perod - User Sign In
 
-CORRECT_USERNAME = "4444"
-CORRECT_PASSWORD = "password123" 
+correct_username = "4444"
+correct_passowrd = "password123" 
 
 def get_username():
     username = input("What is your username: ")
@@ -12,7 +12,7 @@ def get_password():
     return password
 
 def check_login(username, password):
-    if username == CORRECT_USERNAME and password == CORRECT_PASSWORD:
+    if username == correct_username and password == correct_passowrd:
         return True
     else:
         return False

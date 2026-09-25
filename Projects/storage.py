@@ -1,15 +1,18 @@
 # storage.py
 
 USERS = {
-    "4444": {
-        "password": "password",
+    "4369": {
+        "password": "changeme4",
         "name": "Isaac",
         "type": "Student",
         "grade": 10,
         "grades": {
-            "English": 94,
-            "Math": 97,
-            "History": 91
+            "CS 1400": 101,
+            "Math": 99,
+            "Health": 100,
+            "Chemistry": 98,
+            "Speech": 96,
+            "English": 102
             }
         },
 
@@ -39,7 +42,7 @@ USERS = {
 
     "teacher": {
         "password": "teacher123",
-        "name": "Mr. Smith",
+        "name": "Ms. LaRose",
         "type": "teacher"
         },
 

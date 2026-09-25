@@ -9,20 +9,14 @@
 #
 #
 #
-"""from plyer import notification
-
-notification.notify(
-    title="Python Alert",
-    message="This is a native computer notification!",
-    app_name="My Python Script",
-    timeout=10 # Duration in seconds the notification stays on screen
-)"""
 
 #
 import random, time, sys
 
-import tkinter as tk
-from tkinter import messagebox
+from plyer import notification
+
+#import tkinter as tk
+#from tkinter import messagebox
 
 from storage import USERS
 
@@ -46,19 +40,15 @@ def generate_code():
     return code
 
 def show_code(code):
-    try:
-        root = tk.Tk()
-        root.withdraw()
-
-        messagebox.showinfo(
-            "Aspire Verification",
-            f"Your verification code is: {code}"
+    #try:
+        notification.notify(
+            title = "Aspire Verification",
+            message = f"Your verification code is: {code}",
+            app_name = "Aspire",
         )
 
-        #root.destroy()
-
-    except tk.TclError:
-        print(f"\nYour verification code is: {code}")
+    #except plyer.Error:
+        #print(f"\nYour verification code is: {code}")
 
 def verify_code(code):
     attempts = 0
