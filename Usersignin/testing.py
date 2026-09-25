@@ -5,7 +5,7 @@ import random, time, sys
 
 from plyer import notification
 
-from Usersignin.storage import USERS
+from storage import USERS
 
 
 def get_username():

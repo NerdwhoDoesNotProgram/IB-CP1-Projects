@@ -24,7 +24,7 @@ import random, time, sys
 import tkinter as tk
 from tkinter import messagebox
 
-from Usersignin.storage import USERS
+from storage import USERS
 
 
 def get_username():
