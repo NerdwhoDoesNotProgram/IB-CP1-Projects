@@ -40,15 +40,15 @@ def generate_code():
     return code
 
 def show_code(code):
-    #try:
+    try:
         notification.notify(
             title = "Aspire Verification",
             message = f"Your verification code is: {code}",
             app_name = "Aspire",
         )
 
-    #except plyer.Error:
-        #print(f"\nYour verification code is: {code}")
+    except (NotImplementedError, Exception) as e:
+        print(f"\nYour verification code is: {code}")
 
 def verify_code(code):
     attempts = 0
