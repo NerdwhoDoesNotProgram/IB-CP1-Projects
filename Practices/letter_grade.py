@@ -25,7 +25,6 @@ def find_letter_grade(average):
     else:
         return "F"
 
-
 def find_grade():
 
     grades = []
@@ -50,7 +49,6 @@ def find_grade():
     letter_grade = find_letter_grade(average)
 
     print(f"Your average grade is: {round(average, 2)}% ({letter_grade})")
-
 
 def valid_input():
 
