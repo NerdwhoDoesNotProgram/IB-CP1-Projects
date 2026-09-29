@@ -1,0 +1,2 @@
+# IB - Shopping List Manager
+
