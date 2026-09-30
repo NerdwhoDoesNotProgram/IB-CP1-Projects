@@ -1,1 +1,3 @@
-True
+
+siblings.remove("Vienna")
+siblings.pop()
