@@ -18,6 +18,8 @@ siblings.remove("Vienna")
 siblings.pop(0)
 print(*siblings)
 
+# delete list_name[index]
+
 #_______________________________________________________________________________________________
 #  Tuples ()
 

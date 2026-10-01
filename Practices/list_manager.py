@@ -6,6 +6,9 @@ def show_list(shopping_list, completed_list):
 
     list_num = 0
 
+    sort_list(shopping_list)
+
+
     print("\n--- Current Shopping List ---")
     if not shopping_list:
         print("Your list is currently empty.")
@@ -44,9 +47,6 @@ def remove_item(shopping_list, completed_list):
     else:
         print(f"'{item}' was not found in the list.")
 
-"""def strikethrough(item):
-        return "".join(char + "\u0336" for char in item)"""
-
 def mark_done(shopping_list, completed_list):  # Need to fix how it strikes though
     
     if not shopping_list:
@@ -67,14 +67,15 @@ def mark_done(shopping_list, completed_list):  # Need to fix how it strikes thou
         print(f"'{item}' was not found in the list.")
 
 
+def sort_list(shopping_list):
+    shopping_list.sort()
+
 shopping_list = []
 completed_list = []
 
 def main():
     while True:
-        action = input(
-            "Choose an action (add, remove, view, done, exit): "
-        ).lower().strip()
+        action = input("Choose an action (add, remove, view, done, exit): ").lower().strip()
 
         if action == "add" or action == "a" or action == "1":
             add_item(shopping_list)
