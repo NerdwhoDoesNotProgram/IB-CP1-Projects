@@ -25,8 +25,11 @@ def add_item(shopping_list):
     item = input("Enter the item to add: ").strip().capitalize()
 
     if item:
-        shopping_list.append(item)
-        print(f"'{item}' has been added.")
+        if item in shopping_list:
+            print(f"{item} is already in the list.")
+        else:
+            shopping_list.append(item)
+            print(f"'{item}' has been added.")
     else:
         print("Item name cannot be empty.")
 
@@ -66,6 +69,9 @@ def mark_done(shopping_list, completed_list):  # Need to fix how it strikes thou
     else:
         print(f"'{item}' was not found in the list.")
 
+def clear_list(shopping_list, completed_list):
+    shopping_list.clear()
+    completed_list.clear()
 
 def sort_list(shopping_list):
     shopping_list.sort()
@@ -75,7 +81,7 @@ completed_list = []
 
 def main():
     while True:
-        action = input("Choose an action (add, remove, view, done, exit): ").lower().strip()
+        action = input("Choose an action (add, remove, view, done, clear, exit): ").lower().strip()
 
         if action == "add" or action == "a" or action == "1":
             add_item(shopping_list)
@@ -92,14 +98,18 @@ def main():
             mark_done(shopping_list, completed_list)
             show_list(shopping_list, completed_list)
 
-        elif action == "exit" or action == "e" or action == "5":
+        elif action == "clear" or action == "c" or action == "5":
+            clear_list(shopping_list, completed_list)
+            show_list(shopping_list, completed_list)
+
+        elif action == "exit" or action == "e" or action == "6":
             print("\nGoodbye!")
             break
 
         else:
             print(
                 "\nInvalid option, please choose: "
-                "add, remove, view, done, or exit."
+                "add, remove, view, done, clear, or exit."
                 )
             
 main()
