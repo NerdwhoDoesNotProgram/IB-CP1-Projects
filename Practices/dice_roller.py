@@ -94,7 +94,13 @@ def dice_roller_playagain():
                     for_my_sister()
 
                 if dice_size == "GOOGOLPLEX":
-                    return 10**(10000000)*999
+                    return 10**(10**100)
+
+                if dice_size == "OTHER":
+                    return  5 * 10**(10**100 - 1)
+
+                if dice_size == "HALFOTHER":
+                    return  10**100/2 + 10**(10**100)/4
                 
                 if dice_size not in ["1", "4", "6", "8", "10", "12", "20", "100", "5000", "999999999", "999999999999999999999999999"]:
                     raise ValueError
