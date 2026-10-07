@@ -15,10 +15,12 @@ else:
         factorial *= i
 
     print(" × ".join(numbers), "=", factorial)"""
+
+
 import math
 
 def product(number):
-    return math.factorial
+    return math.factorial(number)
 
 number = int(input("What number do you want the factorial of: "))
 
@@ -28,7 +30,8 @@ elif number == 0:
     print("0 = 1")
 else:
     numbers = range(number, 0, -1)
-    factorial = map(product, numbers)
-    
+    numbers_string = list(map(str, numbers))
 
-print (" × ".join(factorial), "=", 12)
+    factorial = product(number)
+
+    print(" × ".join(numbers_string), "=", factorial)
