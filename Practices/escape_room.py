@@ -1,50 +1,45 @@
 # IB - Escape room
 
-import random
+def escape_room():
+    room_description = (
+        "You blink open your eyes to the harsh, flickering glow of CRT monitors inside a windowless computer lab. "
+        "A faded brass plaque next to the heavy metal door reads: 'Designated Facility: ROOM 101'. "
+        "The heavy metal door is locked tight, and a glowing biometric keypad waits next to it.\n\n"
+        "The room is an absolute mess of distractions:\n"
+        "- A sticky mechanical keyboard on the nearest desk has a Post-it note reading: 'TODO: Fix the infinite loop before lunch!' "
+        "and another note scribbled with a chaotic Fibonacci sequence: `0, 1, 1, 2, 3, 5, 8, 13...`.\n"
+        "- Stacks of ancient Python documentation manuals are piled high, open to a chapter on `SyntaxError` exceptions.\n"
+        "- On the back wall, someone has taped a massive, incredibly detailed 12-bullet-point poster for the "
+        "'Future Accountants of America' complete with a pie chart showing last year's chocolate-chip versus oatmeal-raisin "
+        "cookie sales ratio (64% to 36%) and a laminated photo of their club advisor proudly holding an ordinary stapler.\n"
+        "- Above the whiteboard, a plaque reads: 'Welcome to the place where all programs begin their execution.'\n\n"
+        "You squint at the keypad. What is this place called again?"
+    )
 
-code = 1234
-hints = ("Hint1", "Hint 2", "Hint 3", "Hint 4")
-tries = 0
-hint_number = 3
-room_description = ""
+    correct_code = "101"
+    max_attempts = 3
+    tries = 0
 
-"""
-while True:
-    while True:
-        try:
-            guess = int(input("\nGuess the passcode: "))
-            if guess < 0 or guess > 100:
-                print('You should read the instructions!')
-                continue
+    print("=== WELCOME TO THE CODING LAB ESCAPE ROOM ===")
+    print(room_description)
+
+    while tries < max_attempts:
+        guess = input("\nEnter the keypad code: ").strip()
+
+        if guess == correct_code or guess.upper() == "ROOM 101":
+            print("\n*CLICK!* The biometric scanner flashes green. The door swings open. You Escaped! ")
             break
-        except:
-            print("That isn't a number")
+        else:
+            tries += 1
+            remaining = max_attempts - tries
+            print(f"Incorrect code! Tries remaining: {remaining}")
+            
+            if tries == 1:
+                print("Hint: Ignore the accountants and the math sequences. Think about what room you are trapped in—what kind of lab is this?")
+            elif tries == 2:
+                print("Hint: It's a 'Code... (ing room)' combined with a standard room number.")
 
-    if guess == code:
-        print(f"You win! The number was {code}!")
-        break
-    elif guess < code:
-        print('That number is too low')
-    elif guess > code:
-        print("That number is too large.")
-    else:
-        print("I don't know how you got here... but you did something wrong")
-"""
+    if tries == max_attempts:
+        print("\nYou ran out of attempts! The keypad flashes red and locks permanently. You are trapped forever! ")
 
-while tries < 4:
-    while True:
-        try:
-            guess = int(input("\nWhat is the password: "))
-            break
-        except:
-            print("That is not avalid form of the code. Please try again.")
-
-    if guess == code:
-        print("You Escaped!")
-        break
-    else:
-        print(f"Hint: {hints[hint_number]}")
-        hint_number -= 1
-        tries += 1
-
-print('You are trapped')
+escape_room()
