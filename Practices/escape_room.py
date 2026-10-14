@@ -8,7 +8,7 @@ def escape_room():
     room_description1 = (
         "You blink open your eyes to the harsh, flickering glow of CRT "
         "monitors inside a windowless computer lab. "
-        "A timer on the wall counts down."
+        "A timer on the wall counts down..."
     )
 
     room_description2 = (
