@@ -3,7 +3,6 @@
 import time, sys
 
 
-
 def escape_room():
     room_description1 = (
         "You blink open your eyes to the harsh, flickering glow of CRT monitors inside a windowless computer lab. "
@@ -24,11 +23,11 @@ def escape_room():
     print("=== WELCOME TO THE CODING LAB ESCAPE ROOM ===")
     print(room_description1)
     time.sleep(1)
-    print("4:00")
+    print("04:00")
     time.sleep(1)
-    print("3:59")
+    print("03:59")
     time.sleep(1)
-    print("3:58...")
+    print("03:58...")
     time.sleep(1)
     print(room_description2)
 
@@ -36,43 +35,51 @@ def escape_room():
 
     while tries < max_attempts:
 
-        guess = input("\nEnter the keypad code: ").strip()
+        action = input("\n What action do you want to do? (1: look, 2: timer, 3: enter code)").strip().lower()
 
-        time_elapsed = time.perf_counter() - start_time
+        if action == "1" or action == "look" or action == "l":
+            look()
+        elif action == "2" or action == "timer" or action == "t":
+            timer(time_elapsed)
+            return time_elapsed
+        elif action == "3" or action == "enter code" or action == "enter" or action == "code" or action == "e" or action == "c":
+            guess = input("\nEnter the keypad code: ").strip()
 
-        if time_elapsed >= duration:
-            print("\nThe timer counts down...")
-            time.sleep(1)
-            print("0:04")
-            time.sleep(1)
-            print("0:03")
-            time.sleep(1)
-            print("0:02")
-            time.sleep(1)
-            print("0:01")
-            time.sleep(1)
-            print("0:00")
-            print("As the timer hits zero, the keypad flashes red and locks permanently. "
-                  "You took too long and are trapped forever!")
-            sys.exit()
+            time_elapsed = time.perf_counter() - start_time
 
-        if guess == correct_code or guess.upper() == "ROOM 101":
-            print("\n*CLICK!* The biometric scanner flashes green. The door swings open. You Escaped!")
-            sys.exit()
+            if time_elapsed >= duration:
+                print("\nThe timer counts down...")
+                time.sleep(1)
+                print("00:04")
+                time.sleep(1)
+                print("00:03")
+                time.sleep(1)
+                print("00:02")
+                time.sleep(1)
+                print("00:01")
+                time.sleep(1)
+                print("00:00")
+                print("As the timer hits zero, the keypad flashes red and locks permanently. "
+                    "You took too long and are trapped forever!")
+                sys.exit()
 
-        else:
-            tries += 1
-            remaining = max_attempts - tries
-            print(f"Incorrect code! Tries remaining: {remaining}")
+            if guess == correct_code or guess.upper() == "ROOM 101":
+                print("\n*CLICK!* The biometric scanner flashes green. The door swings open. You Escaped!")
+                sys.exit()
+
+            else:
+                tries += 1
+                remaining = max_attempts - tries
+                print(f"Incorrect code! Tries remaining: {remaining}")
+                    
+                if tries == 1:
+                    print("Hint: Ignore the accountants and the math sequences. Think about what room you are trapped in—what kind of lab is this?")
+
+                elif tries == 2:
+                    print("Hint: It's a 'Code... (ing room)' combined with a standard room number.")
                 
-            if tries == 1:
-                print("Hint: Ignore the accountants and the math sequences. Think about what room you are trapped in—what kind of lab is this?")
-
-            elif tries == 2:
-                print("Hint: It's a 'Code... (ing room)' combined with a standard room number.")
-            
-            elif tries == 3:
-                print("Hint: What is the room number?")
+                elif tries == 3:
+                    print("Hint: What is the room number?")
 
     print("\nYou ran out of attempts! The keypad flashes red and locks permanently. You are trapped forever!")
     sys.exit()
@@ -90,18 +97,17 @@ def look():
         "You squint at the keypad. What is this place called again?"
     )
 
-def timer():
-    print("You glance up at the wall to the timer. it is still counting down...")
-    time.sleep(1)
-    print("0:04")
-    time.sleep(1)
-    print("0:03")
-    time.sleep(1)
-    print("0:02")
-    time.sleep(1)
-    print("0:01")
-    time.sleep(1)
-    print("0:00")
+def timer(time_elapsed):
 
+    print("You glance up at the wall to the timer. it is still counting down...")
+
+    for i in range(4):
+        mins, secs = divmod(time_elapsed, 60)
+
+        formatted_time = f"{int(mins):02d}:{secs:02d}"
+
+        time.sleep(1)
+        print(f"{formatted_time}")
+    print("...")
 
 escape_room()
