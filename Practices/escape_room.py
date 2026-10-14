@@ -40,7 +40,6 @@ def escape_room():
         time_elapsed = time.perf_counter() - start_time
         time_remaining = duration - time_elapsed
 
-        # Check whether the time has run out.
         if time_remaining <= 0:
             print("\n00:00")
             print(
@@ -55,7 +54,6 @@ def escape_room():
             "(1: look, 2: timer, 3: enter code): "
         ).strip().lower()
 
-        # Check the timer again after the player responds.
         time_elapsed = time.perf_counter() - start_time
 
         if time_elapsed >= duration:
@@ -77,7 +75,6 @@ def escape_room():
         ):
             guess = input("\nEnter the keypad code: ").strip()
 
-            # Check whether time ran out while entering the code.
             time_elapsed = time.perf_counter() - start_time
 
             if time_elapsed >= duration:
