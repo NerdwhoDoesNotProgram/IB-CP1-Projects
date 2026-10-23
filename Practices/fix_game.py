@@ -44,7 +44,7 @@ average = total / rounds
 print("Your average guesses per round was " + str(round(average, 2))) # I don't think this is an error, but this now rounds the avarage guesses.
 
 best_round = scores[0]
-for i in range(rounds): # Since range is exclusibe, not only did this not use the last index of the list, but it did not used the first. But the index starts at 0. This would be a Runtime error.
+for i in range(rounds): # Since range is exclusibe, it not use the last index of the list.  This would be a Runtime error.
     if scores[i] < best_round:
         best_round = scores[i]
 
