@@ -9,8 +9,7 @@ print("Welcome to Guess the Number! You'll play 3 rounds.")
 print("Each round, try to guess the number in as few tries as possible.\n")
 
 for round_num in range(1, rounds + 1):
-    #secret_number = random.randint(1, 20)
-    secret_number = 16
+    secret_number = random.randint(1, 20)
 
     guesses = 0
     found = False
