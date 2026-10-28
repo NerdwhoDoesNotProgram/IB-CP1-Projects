@@ -3,13 +3,11 @@
 def length(password):
     return len(password) >= 8
 
-
 def uppercase(password):
     for char in password:
         if 65 <= ord(char) <= 90:
             return True
     return False
-
 
 def lowercase(password):
     for char in password:
@@ -17,13 +15,11 @@ def lowercase(password):
             return True
     return False
 
-
 def numbers(password):
     for char in password:
         if 48 <= ord(char) <= 57:
             return True
     return False
-
 
 def special_char(password):
     special_chars = "!@#$%^&*()_+-=[]{}|;:,.<>?"
@@ -31,7 +27,6 @@ def special_char(password):
         if char in special_chars:
             return True
     return False
-
 
 def main():
     password = input("Enter a password: ")
@@ -70,8 +65,8 @@ def main():
     else:
         strength = "Very Strong"
 
-    print("\nStrength score:" + str(points) + "/5")
-    print("Password strength:" + str(strength))
+    print("\nStrength score: " + str(points) + "/5")
+    print("Password strength: " + str(strength))
 
 
 main()
