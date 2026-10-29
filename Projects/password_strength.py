@@ -1,26 +1,31 @@
 # IB - Password Strength Checker
 
+# Takes the password and returns it's length
 def length(password):
     return len(password) >= 8
 
+# Takes the password and checks each character to see if they are uppercase
 def uppercase(password):
     for char in password:
         if 65 <= ord(char) <= 90:
             return True
     return False
 
+# Takes the password and checks each character to see if they are Lowercase
 def lowercase(password):
     for char in password:
         if 97 <= ord(char) <= 122:
             return True
     return False
 
+# Takes the password and checks each character to see if there is a number
 def numbers(password):
     for char in password:
         if 48 <= ord(char) <= 57:
             return True
     return False
 
+# Takes the password and checks each character to see if there are any special characters
 def special_char(password):
     special_chars = "!@#$%^&*()_+-=[]{}|;:,.<>?"
     for char in password:
@@ -32,12 +37,14 @@ def main():
     password = input("Enter a password: ")
     points = 0
 
+    # Sets the returned truth value to a variable
     length_point = length(password)
     upper_point = uppercase(password)
     lower_point = lowercase(password)
     numbers_point = numbers(password)
     special_point = special_char(password)
 
+    # Prints the feedback for the password
     print("\nPassword strength assessment:")
     print("Length (8+ characters):", "Yes" if length_point else "No")
     print("Contains uppercase:", "Yes" if upper_point else "No")
@@ -45,6 +52,7 @@ def main():
     print("Contains numbers:", "Yes" if numbers_point else "No")
     print("Contains special characters:", "Yes" if special_point else "No")
 
+    # Calculates the points
     if length_point:
         points += 1
     if upper_point:
@@ -56,6 +64,7 @@ def main():
     if special_point:
         points += 1
 
+    # Finds what rating to give the password, using the points
     if points <= 2:
         strength = "Weak"
     elif points == 3:
@@ -65,6 +74,7 @@ def main():
     else:
         strength = "Very Strong"
 
+    # Prints the rating
     print("\nStrength score: " + str(points) + "/5")
     print("Password strength: " + str(strength))
 
