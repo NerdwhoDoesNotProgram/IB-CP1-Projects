@@ -1,1 +1,1 @@
-for item in shopping_list:
+
