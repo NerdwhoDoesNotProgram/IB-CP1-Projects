@@ -25,8 +25,12 @@
 
 # Functions may or may not take arguments, and may or may not return a value
 """
+"""Order:
+Global variables
+Functions
+Main code"""
 
-name = input("Tell me your name: ")
+
 
 def birthday(name, age=35):
     print("Happy Birthday to you")
@@ -35,14 +39,50 @@ def birthday(name, age=35):
     print("Happy Birthday to you\n")
     print(f"You are now {age} years old!")
   
+def main():
+    name = input("Tell me your name: ")
 
-print("November")
-birthday("Tia", 30)
+    print("November")
+    birthday("Tia", 30)
 
-print("December")
-birthday("Xavier", 24)
+    print("December")
+    birthday("Xavier", 24)
 
-print("January")
-birthday("Treyson", 20)
+    print("January")
+    birthday("Treyson", 20)
 
-birthday(name)
+    birthday(name)
+
+#main()
+
+"""------------------------------------------------------------------------------------------------"""
+# Day two of functions notes
+
+"""Takes in a question, tata type, correct answers (Default as an empty list)
+    
+    input within function, and then check fo data type."""
+
+"""For commenting on funcitons you do the three qutaotpnmarks after the name line, and hten describe the funciotn"""
+
+attempts = 0
+
+def stupid_proof(user_answer, correct_answers):
+    user_answer = user_answer.strip().lower()
+    if user_answer in correct_answers:
+        return True, user_answer, increase()
+    else:
+        return False, user_answer, increase()
+    
+def increase():
+    return attempts +1
+
+while True: 
+    capital = input("What is the capital of Utah: ")
+
+    correct, capital, attempts = stupid_proof(capital, ["salt lake city", "slc", "salt lake", ])
+
+    if correct:
+        print(f"Good job {capital} is the capital of Utah!")
+        break
+    else: 
+        print(f"Try again. {capital} is not the capital of Utah. You have tried {attempts} time(s).")
