@@ -6,7 +6,8 @@ import turtle as t
 import random
 import time
 
-# PSEUDOCODE:
+# Pseudocode:
+"""
 # Set up the screen and finish line
 # Ask the user to choose a turtle color
 # Give the user's turtle that color
@@ -17,22 +18,28 @@ import time
 #     Move each turtle a random number of steps
 #     Check if a turtle crossed the finish line
 # Announce the winner and race time
-# Tell the user if their turtle won
+# Tell the user if their turtle won"""
 
+def drawline(X):
+    line = t.Turtle()
+    line.pencolor("white")
+    line.speed(0)
+    line.hideturtle()
+    line.penup()
+    line.goto(X, 250)
+    line.pendown()
+    line.goto(X, -250)
 
 # Function to set up the race
 def setup_race():
     screen = t.Screen()
+    screen.bgcolor("black")
     screen.title("Turtle Race!")
     screen.setup(800, 600)
 
     # Draw finish line
-    line = t.Turtle()
-    line.hideturtle()
-    line.penup()
-    line.goto(300, 250)
-    line.pendown()
-    line.goto(300, -250)
+    drawline(300)
+    drawline(320)
 
     # Ask user to choose a color
     colors = ["red", "blue", "green", "orange",
@@ -63,12 +70,10 @@ def setup_race():
 
     return screen, racers, player_color
 
-
 # Function to move turtles
 def move_turtles(racers):
     for racer in racers:
         racer.forward(random.randint(1, 10))
-
 
 # Function to find the winner
 def find_winner(racers):
@@ -77,7 +82,6 @@ def find_winner(racers):
             return racer
 
     return None
-
 
 # Function to run the race
 def run_race():
@@ -103,6 +107,7 @@ def run_race():
 
     # Display winner on screen
     message = t.Turtle()
+    message.color("white")
     message.hideturtle()
     message.penup()
     message.goto(0, -250)
@@ -115,6 +120,5 @@ def run_race():
 
     screen.exitonclick()
 
-
-# Start the game (run the race)
+# Calls the functoin to start the race
 run_race()
