@@ -20,6 +20,7 @@ import time
 # Announce the winner and race time
 # Tell the user if their turtle won"""
 
+# Function that draws the finish line
 def drawline(X):
     line = t.Turtle()
     line.pencolor("white")
@@ -30,7 +31,7 @@ def drawline(X):
     line.pendown()
     line.goto(X, -250)
 
-# Function to set up the race
+# Function that sets up the race
 def setup_race():
     screen = t.Screen()
     screen.bgcolor("black")
@@ -70,12 +71,12 @@ def setup_race():
 
     return screen, racers, player_color
 
-# Function to move turtles
+# Function that moves turtles
 def move_turtles(racers):
     for racer in racers:
         racer.forward(random.randint(1, 10))
 
-# Function to find the winner
+# Function that finds the winner
 def find_winner(racers):
     for racer in racers:
         if racer.xcor() >= 300:
@@ -83,7 +84,7 @@ def find_winner(racers):
 
     return None
 
-# Function to run the race
+# Function that runs the race
 def run_race():
     screen, racers, player_color = setup_race()
 
@@ -120,5 +121,5 @@ def run_race():
 
     screen.exitonclick()
 
-# Calls the functoin to start the race
+# Calls the function that runs the race
 run_race()
