@@ -1,63 +1,7 @@
 # IB - Combat Program
 
-"""
-GET  user class
-SET list of user stats from possible numbers by class
-DISPLAY 
 
-Possible functions:
-
-
-def user_stats():
-    pass
-
-def player_char(name, user_stats):
-    pass
-
-def class_stats():
-    user_stats = []
-    return user_stats
-
-def intro():
-    while True:
-        print("Welcome to training! First I need to know some things about you!")
-
-        name = input("What is your name: ")
-
-        fighter_class = input("What class of fighter are you: ")
-
-        class_stats(fighter_class)
-
-        return name, fighter_class
-
-def instructions():
-    pass
-
-def user_turn():
-    pass
-
-def combat():
-    pass
-
-def monster_attack():
-    pass
-
-def damage():
-    pass
-
-def health():
-    pass
-
-def win():
-    pass
-
-
-def run_game():
-    intro()
-"""
-
-
-import random
+import random, time
 
 def class_stats(fighter_class):
     if fighter_class == "1":
@@ -134,7 +78,7 @@ def instructions():
     print("4. Defend - Increase defense against the next attack")
     print("5. Flee - Attempt to escape the battle")
 
-def user_turn(player, monster):
+def user_turn(player, monster, current_monster):
     player["defending"] = False
 
     while True:
@@ -145,19 +89,19 @@ def user_turn(player, monster):
         print("4. Defend")
         print("5. Flee")
 
-        choice = input("Choose an action: ")
+        choice = input("\nChoose an action: ")
 
         if choice == "1":
             attack_roll = random.randint(1, 20) + player["attack_bonus"]
 
-            if attack_roll >= monster["defense"]:
+            if attack_roll >= monster[current_monster]["defense"]:
                 damage = random.randint(1, 8) + player["damage_bonus"]
-                monster["health"] -= damage
+                monster[current_monster]["health"] -= damage
 
                 print("You hit!")
                 print("You dealt", damage, "damage.")
-                print(monster["name"], "now has",
-                    max(0, monster["health"]), "health.")
+                print(monster[current_monster]["name"], "now has",
+                    max(0, monster[current_monster]["health"]), "health.")
             else:
                 print("You missed!")
 
@@ -166,9 +110,9 @@ def user_turn(player, monster):
         elif choice == "2":
             attack_roll = random.randint(1, 20) + player["attack_bonus"]
 
-            if attack_roll >= monster["defense"]:
+            if attack_roll >= monster[current_monster]["defense"]:
                 damage = (random.randint(1, 8) + player["damage_bonus"]) * 2
-                monster["health"] -= damage
+                monster[current_monster]["health"] -= damage
 
                 player["health"] -= 4
 
@@ -176,8 +120,8 @@ def user_turn(player, monster):
                 print("You dealt", damage, "damage.")
                 print("You also took 4 damage!")
                 print("Your health:", max(0, player["health"]))
-                print(monster["name"], "now has",
-                    max(0, monster["health"]), "health.")
+                print(monster[current_monster]["name"], "now has",
+                    max(0, monster[current_monster]["health"]), "health.")
             else:
                 player["health"] -= 4
 
@@ -212,7 +156,7 @@ def user_turn(player, monster):
         elif choice == "5":
             flee_roll = random.randint(1, 20)
 
-            if flee_roll >= 10:
+            if flee_roll >= 9:
                 print("You successfully escaped!")
                 return "flee"
             else:
@@ -222,10 +166,10 @@ def user_turn(player, monster):
         else:
             print("Invalid choice. Please choose 1-5.")
 
-def monster_attack(player, monster):
-    print("\nThe", monster["name"], "attacks!")
+def monster_attack(player, monster, current_monster):
+    print("\nThe", monster[current_monster]["name"], "attacks!")
 
-    attack_roll = random.randint(1, 20) + monster["attack_bonus"]
+    attack_roll = random.randint(1, 20) + monster[current_monster]["attack_bonus"]
 
     defense = player["defense"]
 
@@ -234,7 +178,7 @@ def monster_attack(player, monster):
         print("Your defense increased to", defense, "!")
 
     if attack_roll >= defense:
-        damage = random.randint(1, 8) + monster["damage_bonus"]
+        damage = random.randint(1, 2) + monster[current_monster]["damage_bonus"]
         player["health"] -= damage
 
         print("The monster hit you!")
@@ -246,15 +190,47 @@ def monster_attack(player, monster):
     player["defending"] = False
 
 def combat(player):
+    current_monster = random.randint(1, 5)
+
     monster = {
-    "name": "Dire Wolf",
-    "health": 36,
-    "defense": 13,
-    "attack_bonus": 3,
-    "damage_bonus": 2
+        1: {
+            "name": "Wolf",
+            "health": 26,
+            "defense": 16,
+            "attack_bonus": 3,
+            "damage_bonus": 3
+        },
+        2: {
+            "name": "Zombie",
+            "health": 19,
+            "defense": 10,
+            "attack_bonus": 2,
+            "damage_bonus": 4
+        },
+        3: {
+            "name": "Elf",
+            "health": 20,
+            "defense": 17,
+            "attack_bonus": 4,
+            "damage_bonus": 0
+        },
+        4: {
+            "name": "Giant",
+            "health": 50,
+            "defense": 5,
+            "attack_bonus": 0,
+            "damage_bonus": 5
+        },
+        5: {
+            "name": "Angry Mother",
+            "health": 10,
+            "defense": 15,
+            "attack_bonus": 4,
+            "damage_bonus": 10
+        },
     }
 
-    print("\nYou are being attacked by a", monster["name"], "!")
+    print("\nYou are being attacked by a", monster[current_monster]["name"], "!")
 
     first_turn = random.choice(["player", "monster"])
 
@@ -263,26 +239,26 @@ def combat(player):
     else:
         print("The monster moves first!")
 
-    while player["health"] > 0 and monster["health"] > 0:
+    while player["health"] > 0 and monster[current_monster]["health"] > 0:
 
         if first_turn == "player":
-            result = user_turn(player, monster)
+            result = user_turn(player, monster, current_monster)
 
             if result == "flee":
                 return
 
-            if player["health"] <= 0 or monster["health"] <= 0:
+            if player["health"] <= 0 or monster[current_monster]["health"] <= 0:
                 break
 
-            monster_attack(player, monster)
+            monster_attack(player, monster, current_monster)
 
         else:
-            monster_attack(player, monster)
+            monster_attack(player, monster, current_monster)
 
-            if player["health"] <= 0 or monster["health"] <= 0:
+            if player["health"] <= 0 or monster[current_monster]["health"] <= 0:
                 break
 
-            result = user_turn(player, monster)
+            result = user_turn(player, monster, current_monster)
 
             if result == "flee":
                 return
@@ -293,14 +269,17 @@ def combat(player):
         print("\nYou have been defeated!")
         print("Better luck next time!")
 
-    elif monster["health"] <= 0:
+    elif monster[current_monster]["health"] <= 0:
         print("\nCongratulations!")
-        print("You defeated the", monster["name"], "!")
+        print("You defeated the", monster[current_monster]["name"], "!")
         print("You have", player["health"], "health remaining.")
+
 
 def run_game():
     player = intro()
+    time.sleep(2)
     instructions()
+    time.sleep(2)
     combat(player)
 
 run_game()
