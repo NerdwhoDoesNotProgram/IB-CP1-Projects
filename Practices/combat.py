@@ -4,9 +4,10 @@
 GET  user class
 SET list of user stats from possible numbers by class
 DISPLAY 
-"""
 
-"""
+Possible functions:
+
+
 def user_stats():
     pass
 
