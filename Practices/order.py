@@ -4,6 +4,7 @@
 # The Cheesecake Factory - Orem, Utah
 # Menu reference:
 # https://www.thecheesecakefactory.com/location/orem-ut/menu
+# https://www.thecheesecakefactory.com/veg
 
 # PSEUDOCODE:
 # 1. Create a dictionary containing menu categories, items, and prices.
@@ -54,6 +55,15 @@ menu = {
         "Thai Lettuce Wraps with Chicken": 19.95
     },
 
+    "Vegitarian Appetizers": {
+        "Quesadilla": 13.95,
+        "Avacado Eggrolls": 16.95,
+        "Hot Spinach and Cheese Dip": 17.50,
+        "Thai Lettice Wraps with Avacado": 19.95,
+        "Small Thai Lettuce Wraps with Avacado": 13.95,
+        "Pretzel Bites With Cheddar Cheese Fondue": 15.95
+    },
+
     "Main Course": {
 
         # Bowls and Flatbread Pizzas
@@ -71,7 +81,7 @@ menu = {
         "Bistro Burger": 19.95,
         "Americana Cheeseburger": 18.95,
         "Smokehouse BBQ Burger": 19.95,
-        "Veggie Burger": 17.95,
+        "Veggie Burger": 18.95,
 
         # Sandwiches
         "Chicken Shawarma": 18.50,
@@ -84,6 +94,10 @@ menu = {
 
         # Salads
         "Cobb Salad": 19.95,
+        "Tossed Green Salad": 12.50,
+        "Caesar Salad": 14.95,
+        "Tai Chicken Salad": 19.50,
+        "Barbeque Ranch Chicken Salad": 19.95,
         "Chinese Chicken Salad": 19.95,
         "Santa Fe Salad": 19.95,
         "Vegan Cobb Salad": 18.95,
@@ -115,6 +129,22 @@ menu = {
         "Steak Diane": 29.95,
         "Grilled Rib-Eye Steak": 43.95,
         "Filet Mignon": 49.95
+    },
+
+    "Vegitarian Main Course": {
+        # Flatbread Pizzas
+        "Cheese Flatbread Pizza": 12.95,
+        "Margherita Flatbread Pizza": 13.50,
+        "Fresh Basil, Tomato and Cheese Flatbread Pizza": 13.95,
+        # Burgers
+        "Veggie Burger": 18.95,
+        # Salads
+        "Tossed Green Salad": 12.50,
+        "Vegan Cobb Salad": 18.95,
+        # Pastas
+        "Fettuccini Alfredo": 22.95,
+        "Four Cheese Pasta": 23.95,
+        "Evelyn's Favorite Pasta": 23.50
     },
 
     "Side Dishes": {
@@ -185,10 +215,7 @@ menu = {
     }
 }
 
-
-# ORDER
- 
-
+# RECORDS THE ORDER
 order = {
     "Drink": "",
     "Main Course": "",
@@ -198,11 +225,8 @@ order = {
     "Desserts": []
 }
 
-
-
 # DISPLAY MENU
  
-
 def show_menu():
 
     print("\n========== THE CHEESECAKE FACTORY ==========")
