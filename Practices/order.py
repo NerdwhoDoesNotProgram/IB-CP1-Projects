@@ -55,12 +55,12 @@ menu = {
         "Thai Lettuce Wraps with Chicken": 19.95
     },
 
-    "Vegitarian Appetizers": {
+    "Vegetarian Appetizers": {
         "Quesadilla": 13.95,
-        "Avacado Eggrolls": 16.95,
+        "Avocado Eggrolls": 16.95,
         "Hot Spinach and Cheese Dip": 17.50,
-        "Thai Lettice Wraps with Avacado": 19.95,
-        "Small Thai Lettuce Wraps with Avacado": 13.95,
+        "Thai Lettuce Wraps with Avocado": 19.95,
+        "Small Thai Lettuce Wraps with Avocado": 13.95,
         "Pretzel Bites With Cheddar Cheese Fondue": 15.95
     },
 
@@ -131,7 +131,7 @@ menu = {
         "Filet Mignon": 49.95
     },
 
-    "Vegitarian Main Course": {
+    "Vegetarian Main Course": {
         # Flatbread Pizzas
         "Cheese Flatbread Pizza": 12.95,
         "Margherita Flatbread Pizza": 13.50,
@@ -212,6 +212,16 @@ menu = {
         "Kids Grilled Cheese Sandwich": 9.50,
         "Kids Grilled Chicken": 11.50,
         "Kids Grilled Salmon": 15.50
+    },
+
+    "Vegetarian Kids Menu": {
+        "Kids Pasta with Butter and Parmesan": 8.95,
+        "Kids Pasta with Marinara Sauce": 10.50,
+        "Kids Pasta with Alfredo Sauce": 10.95,
+        "Kids Macaroni and Cheese": 9.50,
+        "Kids Cheese Flatbread Pizza": 10.95,
+        "Kids Quesadilla": 9.95,
+        "Kids Grilled Cheese Sandwich": 9.50
     }
 }
 
@@ -282,25 +292,33 @@ def get_main():
 
     while True:
 
-        print("\nWould you like a regular meal or a kids meal?")
+        print("\nWhat type of meal would you like?")
         print("1. Regular Main Course")
-        print("2. Kids Menu")
+        print("2. Vegetarian Main Course")
+        print("3. Kids Menu")
+        print("4. Vegetarian Kids Menu")
 
         choice = input("Enter your choice: ").strip()
 
         if choice == "1":
-
             order["Main Category"] = "Main Course"
             return get_item("Main Course")
 
         elif choice == "2":
+            order["Main Category"] = "Vegetarian Main Course"
+            return get_item("Vegetarian Main Course")
 
+        elif choice == "3":
             order["Main Category"] = "Kids Menu"
             return get_item("Kids Menu")
 
+        elif choice == "4":
+            order["Main Category"] = "Vegetarian Kids Menu"
+            return get_item("Vegetarian Kids Menu")
+
         else:
 
-            print("Invalid selection. Please enter 1 or 2.")
+            print("Invalid selection. Please enter 1, 2, 3, or 4.")
  
 # GET SIDE DISHES
 def get_sides():
@@ -454,8 +472,13 @@ def main():
     order["Side Dishes"] = get_sides()
 
     # Offer optional items
-    add_optional_items("Appetizers", "Appetizers")
-
+    if order["Main Category"] in [
+        "Vegetarian Main Course",
+        "Vegetarian Kids Menu"
+    ]:
+        add_optional_items("Vegetarian Appetizers", "Appetizers")
+    else:
+        add_optional_items("Appetizers", "Appetizers")
     add_optional_items("Desserts & Milkshakes", "Desserts")
 
     # Display the completed order
