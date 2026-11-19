@@ -262,14 +262,6 @@ def get_item(category):
 
         choice = input("\nEnter the item number or name: ").strip()
 
-        # Check if the user entered a number
-        if choice.isdigit():
-
-            choice = int(choice)
-
-            if 1 <= choice <= len(items):
-
-                return list(items.keys())[choice - 1]
 
         # Check if the user entered an item name
         for name in items:
@@ -277,6 +269,20 @@ def get_item(category):
             if choice.lower() == name.lower():
 
                 return name
+            
+        # Check if the user entered a number
+        if choice.isdigit():
+
+            choice = int(choice)
+            if 1 > choice > len(items):
+                continue
+
+            elif 1 <= choice <= len(items):
+
+                return list(items.keys())[choice - 1]
+            
+
+        
 
         print("\nInvalid selection. Please try again.")
 
@@ -389,6 +395,11 @@ def cost():
     for appetizer in order["Appetizers"]:
 
         total += menu["Appetizers"][appetizer]
+
+    # Vegetarian Appetizers
+    for appetizer in order["Vegetarian Appetizers"]:
+
+        total += menu["Vegitarian Appetizers"][appetizer]
 
     # Desserts
     for dessert in order["Desserts"]:
