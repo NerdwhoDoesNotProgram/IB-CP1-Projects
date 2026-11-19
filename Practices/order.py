@@ -1,8 +1,7 @@
 
-# IB - Period ___ - Order Up
+# IB - Order Up
 
 # The Cheesecake Factory - Orem, Utah
-# Menu reference:
 # https://www.thecheesecakefactory.com/location/orem-ut/menu
 # https://www.thecheesecakefactory.com/veg
 
@@ -442,7 +441,7 @@ def main():
     print("\nWelcome to The Cheesecake Factory!")
     print("We are happy to serve you!")
 
-    # Ask whether the customer wants to see the menu
+    # Ask whether the customer wants to see the menu before ordering
     while True:
 
         choice = input(
