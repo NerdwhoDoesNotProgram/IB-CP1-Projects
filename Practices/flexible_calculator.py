@@ -38,8 +38,6 @@ Start main program:
     Otherwise display goodbye message
 """
 
-# IB, Period __, Flexible Calculator
-
 def calculator(*args, operation="sum"):
     if len(args) == 0:
         return "Error: No numbers provided."
@@ -65,7 +63,6 @@ def calculator(*args, operation="sum"):
     else:
         return "Invalid operation."
 
-
 def get_numbers():
     numbers = []
 
@@ -85,7 +82,6 @@ def get_numbers():
             print("Please enter a valid number or type 'done'.")
 
     return numbers
-
 
 def main():
     print("Welcome to the Flexible Calculator!")
@@ -120,6 +116,5 @@ def main():
             break
 
     print("\nThank you for using the Flexible Calculator!")
-
 
 main()
