@@ -1,6 +1,8 @@
 # IB - Maze Generator
 
 # https://www.w3schools.com/dsa/dsa_algo_mst_prim.php
+# screen.title("Welcome to the turtle zoo!")
+
 
 import random as r
 import turtle as t
