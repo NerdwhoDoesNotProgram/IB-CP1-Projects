@@ -1,93 +1,96 @@
 # IB - Maze Genorator Pseudocode
 
-GRID SKETCH:
-6x6 grid. Start is the top-left cell (row 0, column 0).
-End is the bottom-right cell (row 5, column 5).
-The guaranteed path is marked P, and walls are marked W.
+    IMOPRT random
+    IMPORT turtle
 
-S  P  W  W  W  W
-W  P  W  P  P  W
-W  P  P  P  W  W
-W  W  W  P  W  W
-W  P  P  P  P  W
-W  W  W  W  P  E
+    GRID SKETCH:
+    6x6 grid. Start is the top-left cell (row 0, column 0).
+    End is the bottom-right cell (row 5, column 5).
+    The guaranteed path is marked P, and walls are marked W.
+
+    S  P  W  W  W  W
+    W  P  W  P  P  W
+    W  P  P  P  W  W
+    W  W  W  P  W  W
+    W  P  P  P  P  W
+    W  W  W  W  P  E
 
 
-FUNCTION setup_screen
-    # Job: create the drawing screen and turtle
-    CREATE a drawing screen
-    SET the screen size
-    CREATE a turtle for drawing
-    SET the turtle speed and hide it
-    RETURN the screen and turtle
+    FUNCTION setup_screen
+        # Job: create the drawing screen and turtle
+        CREATE a drawing screen
+        SET the screen size
+        CREATE a turtle for drawing
+        SET the turtle speed and hide it
+        RETURN the screen and turtle
 
-FUNCTION carve_path(grid)
-    # Job: make a guaranteed path from the start to the end
-    SET row to 0
-    SET column to 0
-    MARK the starting cell as a path
-    REPEAT until row is 5 and column is 5
-    IF row is less than 5
-        THEN INCREASE row by 1
-    ELSE
-        INCREASE column by 1
-        MARK the current cell as a path
-    RETURN the grid
+    FUNCTION carve_path(grid)
+        # Job: make a guaranteed path from the start to the end
+        SET row to 0
+        SET column to 0
+        MARK the starting cell as a path
+        REPEAT until row is 5 and column is 5
+        IF row is less than 5
+            THEN INCREASE row by 1
+        ELSE
+            INCREASE column by 1
+            MARK the current cell as a path
+        RETURN the grid
 
-FUNCTION generate_maze
-    # Job: create the grid, make a path, and add walls
-    CREATE a grid with 6 rows and 6 columns
-    CALL carve_path with the grid
-    REPEAT for each row in the grid
-    REPEAT for each cell in that row
-    IF the cell is not already a path THEN
-    RANDOMLY decide if the cell is a wall or an open space
-    RETURN the grid
+    FUNCTION generate_maze
+        # Job: create the grid, make a path, and add walls
+        CREATE a grid with 6 rows and 6 columns
+        CALL carve_path with the grid
+        REPEAT for each row in the grid
+            REPEAT for each cell in that row
+        IF the cell is not already a path THEN
+            RANDOMLY decide if the cell is a wall or an open space
+        RETURN the grid
 
-FUNCTION draw_square(pen, x, y, color)
-    # Job: draw one colored square at a given position
-    MOVE the pen to x and y
-    SET the pen color
-    SET the fill color
-    BEGIN filling the square
-    DRAW four sides of the square
-    END filling the square
+    FUNCTION draw_square(pen, x, y, color)
+        # Job: draw one colored square at a given position
+        MOVE the pen to x and y
+        SET the pen color
+        SET the fill color
+        BEGIN filling the square
+        DRAW four sides of the square
+        END filling the square
 
-FUNCTION draw_maze(pen, grid)
-    # Job: draw every cell of the maze
-    REPEAT for each row in the grid
-    REPEAT for each column in that row
-    CALCULATE the x position from the column
-    CALCULATE the y position from the row
-    IF the cell is a wall THEN
-    SET color to black
-    ELSE
-    SET color to white
-    CALL draw_square with pen, x, y, and color
+    FUNCTION draw_maze(pen, grid)
+        # Job: draw every cell of the maze
+        REPEAT for each row in the grid
+            REPEAT for each column in that row
+                CALCULATE the x position from the column
+                CALCULATE the y position from the row
+        IF the cell is a wall THEN
+            SET color to black
+        ELSE
+            SET color to white
+        CALL draw_square with pen, x, y, and color
 
-FUNCTION main
-    # Job: run the maze program
-    CALL setup_screen and GET the screen and turtle
-    CALL generate_maze and GET the grid
-    CALL draw_maze with the turtle and grid
-    WAIT for the screen to close
+    FUNCTION main
+        # Job: run the maze program
+        CALL setup_screen and GET the screen and turtle
+        CALL generate_maze and GET the grid
+        CALL draw_maze with the turtle and grid
+        WAIT for the screen to close
 
-    TRACE OF carve_path:
+        TRACE OF carve_path:
 
-    Start: row 0, column 0
+        Start: row 0, column 0
 
-    Move 1: row 1, column 0
-    Move 2: row 2, column 0
-    Move 3: row 3, column 0
-    Move 4: row 4, column 0
-    Move 5: row 5, column 0
-    Move 6: row 5, column 1
-    Move 7: row 5, column 2
-    Move 8: row 5, column 3
-    Move 9: row 5, column 4
-    Move 10: row 5, column 5 (END)
+        Move 1: row 1, column 0
+        Move 2: row 2, column 0
+        Move 3: row 3, column 0
+        Move 4: row 4, column 0
+        Move 5: row 5, column 0
+        Move 6: row 5, column 1
+        Move 7: row 5, column 2
+        Move 8: row 5, column 3
+        Move 9: row 5, column 4
+        Move 10: row 5, column 5 (END)
 
-CALL main()
+    CALL main()
 
-WHAT MY TRACE TAUGHT ME:
-My trace showed that the path reaches the bottom row first and then moves across the last row to the end. It does not go outside the grid because it only increases the row while the row is less than 5, and after that it increases the column until it reaches 5. This also makes sure that the last row and column are reached.
+    WHAT MY TRACE TAUGHT ME:
+    My trace showed that the path reaches the bottom row first and then moves across the last row to the end. It does not go outside the grid because it only increases the row while the row is less than 5, and after that it increases the column until it reaches 5. This also makes sure that the last row and column are reached.
